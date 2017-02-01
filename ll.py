@@ -3,7 +3,18 @@ import time
 
 start = time.time()
 
-for i in range(1,100): urllib2.urlopen("http://www.google.com").read()
+max=0
 
+min=100000
+
+for i in range(1,100):
+    start2 = time.time() 
+    urllib2.urlopen("http://www.google.com").read()
+    end2 = time.time()
+    if end2-start2 < min : min=end2-start2 
+    if end2-start2 > max : max=end2-start2 
+        
 end = time.time()
-print(end - start)
+
+print("average max and min are respectively ",  (end - start)/100, max, min)
+
